@@ -1,0 +1,53 @@
+﻿extends layout
+
+block content                   
+    div(class="panel panel-default")
+        div(class="panel-heading")
+            div(class='row')
+                div(class="col-md-4")
+                    h3 Industry
+                div(class="col-md-4")
+                    h3 In state
+                div(class="col-md-4")
+                    h3 Out of state
+        div(class="panel-body")
+            div(class='row')
+                div(class="col-md-4")
+                    a(href='/industry?id=1' class="btn btn-success" role="button") IT
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                div(class="col-md-4")
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                        !{lookup["1"].instatepercent}%
+                div(class="col-md-4")
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                        !{lookup["1"].outstatepercent}%
+                div(class='row')
+                div(class="col-md-4")
+                    a(href='/industry?id=2' class="btn btn-success" role="button") Government
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                div(class="col-md-4")
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                        !{lookup["2"].instatepercent}%
+                div(class="col-md-4")
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                        !{lookup["2"].outstatepercent}%
+                div(class='row')
+                div(class="col-md-4")
+                    a(href='/industry?id=3' class="btn btn-success" role="button") Health
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                div(class="col-md-4")
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                        !{lookup["3"].instatepercent}%
+                div(class="col-md-4")
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                        !{lookup["3"].outstatepercent}%
+                div(class='row')
+                div(class="col-md-4")
+                    a(href='/industry?id=4' class="btn btn-success" role="button") Construction
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                div(class="col-md-4")
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                        !{lookup["4"].instatepercent}%
+                div(class="col-md-4")
+                    span(aria-hidden="true" style="font-size:1.5em;padding:5px;")
+                        !{lookup["4"].outstatepercent}%

@@ -1,0 +1,9 @@
+﻿extends layout
+
+block content
+      each val in companies
+        div
+            a(href='/search/companyDetail?id=#{val._id}') #{val.companyName} 
+            span #{val.summaryAmount}
+            
+            
