@@ -177,15 +177,20 @@ router.get('/calc', function (req, res) {
             for (var j = 0; j < companyLines.length; j++) {
                 totalAmount = totalAmount + companyLines[j].lineAmount;
             }
+
+            
             console.log(totalAmount);
-            CompanyModel.update({ '_id': company._id }, 
-                { summaryAmount: totalAmount }, 
-                function (err, updateResult) {
-                    res.render('calc', {
-                        numberOfCompanies: queryResult.length
-                    });
+            CompanyModel.update({ '_id': company._id },
+                { summaryAmount: totalAmount },
+                function(err, updateResult) {
+                  
                 });
         }
+
+        res.render('calc', {
+            numberOfCompanies: queryResult.length
+        });
+
     });
 });
 

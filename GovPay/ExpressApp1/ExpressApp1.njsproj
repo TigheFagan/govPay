@@ -48,11 +48,12 @@
     <Content Include="public\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="public\stylesheets\bootstrap-theme.css" />
     <Content Include="public\stylesheets\bootstrap.css" />
-    <Content Include="public\stylesheets\style.styl" />
+    <Content Include="public\stylesheets\style.css" />
     <Content Include="README.md" />
     <Content Include="views\calc.jade" />
     <Content Include="views\companyDetail.jade" />
     <Content Include="views\companyList.jade" />
+    <Content Include="views\footer.jade" />
     <Content Include="views\index.jade" />
     <Content Include="views\industryDetail.jade" />
     <Content Include="views\industrySummary.jade" />

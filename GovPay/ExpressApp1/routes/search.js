@@ -60,7 +60,7 @@ router.get('/companyDetail', function (req, res) {
 });
 
 router.get('/topAmount', function(req, res) {
-    CompanyModel.find({}, 'companyName', { sort: { summaryAmount: -1 }, limit: 1000 }, function (err, result) {
+    CompanyModel.find({ industry: '' }, 'companyName', { sort: { summaryAmount: -1 }, limit: 1000 }, function (err, result) {
         console.log(err);
         console.log(result);
         res.render('companyList', {
