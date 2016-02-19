@@ -32,7 +32,9 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="db.js" />
+    <Compile Include="helper.js" />
     <Compile Include="public\js\bootstrap.min.js" />
+    <Compile Include="public\js\common.js" />
     <Compile Include="routes\company.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\load.js" />

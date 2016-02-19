@@ -1,61 +1,69 @@
 ﻿extends layout
 
 block content                   
-    div(class='row' style="margin-top:1em;" )
-        div(class="col-md-3")
-            i(class="fa fa-medkit fa-5x grid rounded" style="background-color:darkcyan;position: relative;cursor:pointer;" onclick="location.href='/industry?id=3';")
-                p(class="industryIconText" style="top:40%;font-weight:600;font-size:20px") In State
-                p(class="industryIconText" style="top:50%") !{lookup["3"].instatepercent}%
-                p(class="industryIconText" style="top:65%;font-weight:600;font-size:20px") Out of State
-                p(class="industryIconText" style="top:75%") !{lookup["3"].outstatepercent}%
-                p(class="industryIconText" style="top:90%;font-size:16px") Health and Medical
-        div(class="col-md-3")
-            i(class="fa fa-university fa-5x grid rounded" style="background-color:beige;position: relative;cursor:pointer;" onclick="location.href='/industry?id=2';")
-                p(class="industryIconText" style="top:40%;font-weight:600;font-size:20px") In State
-                p(class="industryIconText" style="top:50%") !{lookup["2"].instatepercent}%
-                p(class="industryIconText" style="top:65%;font-weight:600;font-size:20px") Out of State
-                p(class="industryIconText" style="top:75%") !{lookup["2"].outstatepercent}%
-                p(class="industryIconText" style="top:90%;font-size:16px") Government
-        div(class="col-md-3")
-            i(class="fa fa-truck fa-5x grid rounded" style="background-color:firebrick;position:relative;cursor:pointer;" onclick="location.href='/industry?id=11';")
-                p(class="industryIconText" style="top:40%;font-weight:600;font-size:20px") In State
-                p(class="industryIconText" style="top:50%") !{lookup["11"].instatepercent}%
-                p(class="industryIconText" style="top:65%;font-weight:600;font-size:20px") Out of State
-                p(class="industryIconText" style="top:75%") !{lookup["11"].outstatepercent}%
-                p(class="industryIconText" style="top:90%;font-size:16px") Transportation
-        div(class="col-md-3")
-            i(class="fa fa-beer fa-5x grid rounded" style="background-color:darkgrey;position:relative;cursor:pointer;" onclick="location.href='/industry?id=5';")
-                p(class="industryIconText" style="top:40%;font-weight:600;font-size:20px") In State
-                p(class="industryIconText" style="top:50%") !{lookup["5"].instatepercent}%
-                p(class="industryIconText" style="top:65%;font-weight:600;font-size:20px") Out of State
-                p(class="industryIconText" style="top:75%") !{lookup["5"].outstatepercent}%
-                p(class="industryIconText" style="top:90%;font-size:16px") Alcohol
-    div(class='row' style="margin-top:2em")
-        div(class="col-md-3")
-            i(class="fa fa-graduation-cap fa-5x grid rounded" style="background-color:darkgoldenrod;position: relative;cursor:pointer"  onclick="location.href='/industry?id=7';")
-                p(class="industryIconText" style="top:40%;font-weight:600;font-size:20px") In State
-                p(class="industryIconText" style="top:50%") !{lookup["7"].instatepercent}%
-                p(class="industryIconText" style="top:65%;font-weight:600;font-size:20px") Out of State
-                p(class="industryIconText" style="top:75%") !{lookup["7"].outstatepercent}%
-                p(class="industryIconText" style="top:90%;font-size:16px") Education/Workforce
-        div(class="col-md-3")
-            i(class="fa fa-money fa-5x grid rounded" style="background-color:darkgreen;position: relative;cursor:pointer" onclick="location.href='/industry?id=10';")
-                p(class="industryIconText" style="top:40%;font-weight:600;font-size:20px") In State
-                p(class="industryIconText" style="top:50%") !{lookup["10"].instatepercent}%
-                p(class="industryIconText" style="top:65%;font-weight:600;font-size:20px") Out of State
-                p(class="industryIconText" style="top:75%") !{lookup["10"].outstatepercent}%
-                p(class="industryIconText" style="top:90%;font-size:16px") Banking
-        div(class="col-md-3")
-            i(class="fa fa-road fa-5x grid rounded" style="background-color:darkorange;position: relative;cursor:pointer" onclick="location.href='/industry?id=4';")
-                p(class="industryIconText" style="top:40%;font-weight:600;font-size:20px") In State
-                p(class="industryIconText" style="top:50%") !{lookup["4"].instatepercent}%
-                p(class="industryIconText" style="top:65%;font-weight:600;font-size:20px") Out of State
-                p(class="industryIconText" style="top:75%") !{lookup["4"].outstatepercent}%
-                p(class="industryIconText" style="top:90%;font-size:16px") Construction
-        div(class="col-md-3")
-            i(class="fa fa-desktop fa-5x grid rounded" style="background-color:darkkhaki;position: relative;cursor:pointer" onclick="location.href='/industry?id=1';")
-                p(class="industryIconText" style="top:40%;font-weight:600;font-size:20px") In State
-                p(class="industryIconText" style="top:50%") !{lookup["1"].instatepercent}%
-                p(class="industryIconText" style="top:65%;font-weight:600;font-size:20px") Out of State
-                p(class="industryIconText" style="top:75%") !{lookup["1"].outstatepercent}%
-                p(class="industryIconText" style="top:90%;font-size:16px") Information Technology
+    div(class='row row-centered' style="margin-top:1em;" )
+        div(class="col-md-3 col-centered col-fixed")
+            div(class="rounded" style="background-color:#BDE5F8;position: relative;cursor:pointer;" onclick="location.href='/industry?id=3';")
+                i(class="fa fa-medkit fa-5x absoluteCenter" style="top:20%;")
+                p(class="industryIconText absoluteCenter" style="top:34%;font-size:18px") Health and Medical
+                p(class="industryIconText absoluteCenter" style="top:45%;font-weight:600;font-size:20px") In State
+                p(class="industryIconText absoluteCenter" style="top:55%") !{lookup["3"].instatepercent}%
+                p(class="industryIconText absoluteCenter" style="top:70%;font-weight:600;font-size:20px") Out of State
+                p(class="industryIconText absoluteCenter" style="top:80%") !{lookup["3"].outstatepercent}%
+        div(class="col-md-3 col-centered col-fixed")
+            div(class="rounded" style="background-color:#DFF2BF;position: relative;cursor:pointer;" onclick="location.href='/industry?id=2';")
+                i(class="fa fa-university fa-5x absoluteCenter" style="top:20%;")
+                p(class="absoluteCenter" style="top:34%;font-size:18px") Government
+                p(class="absoluteCenter" style="top:45%;font-weight:600;font-size:20px") In State
+                p(class="industryIconText absoluteCenter" style="top:55%") !{lookup["2"].instatepercent}%
+                p(class="absoluteCenter" style="top:70%;font-weight:600;font-size:20px") Out of State
+                p(class="industryIconText absoluteCenter" style="top:80%") !{lookup["2"].outstatepercent}%
+        div(class="col-md-3 col-centered col-fixed")
+            div(class="rounded" style="background-color:#FEEFB3;position: relative;cursor:pointer;" onclick="location.href='/industry?id=11';")
+                i(class="fa fa-truck fa-5x absoluteCenter" style="top:20%;")
+                p(class="absoluteCenter" style="top:34%;font-size:18px") Transportation
+                p(class="absoluteCenter" style="top:45%;font-weight:600;font-size:20px") In State
+                p(class="industryIconText absoluteCenter" style="top:55%") !{lookup["11"].instatepercent}%
+                p(class="absoluteCenter" style="top:70%;font-weight:600;font-size:20px") Out of State
+                p(class="industryIconText absoluteCenter" style="top:80%") !{lookup["11"].outstatepercent}%
+        div(class="col-md-3 col-centered col-fixed")
+            div(class="rounded" style="background-color:#FFBABA;position: relative;cursor:pointer;" onclick="location.href='/industry?id=5';")
+                i(class="fa fa-beer fa-5x absoluteCenter" style="top:20%;")
+                p(class="absoluteCenter" style="top:34%;font-size:18px") Alcohol
+                p(class="absoluteCenter" style="top:45%;font-weight:600;font-size:20px") In State
+                p(class="industryIconText absoluteCenter" style="top:55%") !{lookup["5"].instatepercent}%
+                p(class="absoluteCenter" style="top:70%;font-weight:600;font-size:20px") Out of State
+                p(class="industryIconText absoluteCenter" style="top:80%") !{lookup["5"].outstatepercent}%
+    div(class='row row-centered')
+        div(class="col-md-3 col-centered col-fixed")
+            div(class="rounded" style="background-color:#FFD6A0;position: relative;cursor:pointer;" onclick="location.href='/industry?id=7';")
+                i(class="fa fa-graduation-cap fa-5x absoluteCenter" style="top:20%;")
+                p(class="absoluteCenter" style="top:34%;font-size:18px") Education/Workforce
+                p(class="absoluteCenter" style="top:45%;font-weight:600;font-size:20px") In State
+                p(class="industryIconText absoluteCenter" style="top:55%") !{lookup["7"].instatepercent}%
+                p(class="absoluteCenter" style="top:70%;font-weight:600;font-size:20px") Out of State
+                p(class="industryIconText absoluteCenter" style="top:80%") !{lookup["7"].outstatepercent}%
+        div(class="col-md-3 col-centered col-fixed")
+            div(class="rounded" style="background-color:#BC7BAC;position: relative;cursor:pointer;" onclick="location.href='/industry?id=10';")
+                i(class="fa fa-money fa-5x absoluteCenter" style="top:20%;")
+                p(class="absoluteCenter" style="top:34%;font-size:18px") Financial
+                p(class="absoluteCenter" style="top:45%;font-weight:600;font-size:20px") In State
+                p(class="industryIconText absoluteCenter" style="top:55%") !{lookup["10"].instatepercent}%
+                p(class="absoluteCenter" style="top:70%;font-weight:600;font-size:20px") Out of State
+                p(class="industryIconText absoluteCenter" style="top:80%") !{lookup["10"].outstatepercent}%
+        div(class="col-md-3 col-centered col-fixed")
+            div(class="rounded" style="background-color:#FFE3D4;position: relative;cursor:pointer;" onclick="location.href='/industry?id=4';")
+                i(class="fa fa-road fa-5x absoluteCenter" style="top:20%;")
+                p(class="absoluteCenter" style="top:34%;font-size:18px") Construction
+                p(class="absoluteCenter" style="top:45%;font-weight:600;font-size:20px") In State
+                p(class="industryIconText absoluteCenter" style="top:55%") !{lookup["4"].instatepercent}%
+                p(class="absoluteCenter" style="top:70%;font-weight:600;font-size:20px") Out of State
+                p(class="industryIconText absoluteCenter" style="top:80%") !{lookup["4"].outstatepercent}%
+        div(class="col-md-3 col-centered col-fixed")
+            div(class="rounded" style="background-color:#A0D057;position: relative;cursor:pointer;" onclick="location.href='/industry?id=1';")
+                i(class="fa fa-desktop fa-5x absoluteCenter" style="top:20%;")
+                p(class="absoluteCenter" style="top:34%;font-size:18px") Information Technology
+                p(class="absoluteCenter" style="top:45%;font-weight:600;font-size:20px") In State
+                p(class="industryIconText absoluteCenter" style="top:55%") !{lookup["1"].instatepercent}%
+                p(class="absoluteCenter" style="top:70%;font-weight:600;font-size:20px") Out of State
+                p(class="industryIconText absoluteCenter" style="top:80%") !{lookup["1"].outstatepercent}%

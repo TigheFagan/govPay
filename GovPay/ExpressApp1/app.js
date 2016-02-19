@@ -1,4 +1,5 @@
 ﻿require('./db');
+require('./helper');
 
 var express = require('express');
 var path = require('path');
