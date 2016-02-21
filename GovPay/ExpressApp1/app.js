@@ -1,4 +1,4 @@
-﻿require('./db');
+﻿//require('./db');
 require('./helper');
 
 var express = require('express');
@@ -15,8 +15,8 @@ var load = require('./routes/load');
 var company = require('./routes/company');
 var industry = require('./routes/industry');
 
-var mongo = require('mongodb');
-var mongoose = require('mongoose');
+//var mongo = require('mongodb');
+//var mongoose = require('mongoose');
 
 
 var app = express();

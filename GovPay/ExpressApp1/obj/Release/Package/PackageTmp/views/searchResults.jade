@@ -1,0 +1,23 @@
+﻿doctype html
+html
+  head
+    title
+  body
+    ul 
+        each val in compList
+            li
+                a(href='/search/companyDetail?id=#{val._id}') #{val.companyName}
+            li= val.industry
+            li= val.inState
+            li= val.summaryAmount
+            table
+                each line in val.lines
+                    tr
+                        td= line.transdate
+                        td= line.type
+                        td= line.totalAmount
+                        td= line.lineAmount
+                        td= line.vendorName
+                        td= line.invoice
+                        td= line.agency
+                        td= line.desc   
