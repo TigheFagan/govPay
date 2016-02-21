@@ -24,4 +24,6 @@ var companySchema = new mongoose.Schema({
 
 mongoose.model('companyModel', companySchema, 'company');
 
-mongoose.connect('mongodb://127.0.0.1:27017/nodetest1');
+//mongoose.connect('mongodb://127.0.0.1:27017/nodetest1');
+mongoose.connect('mongodb://admin:falcon2000@ds062898.mongolab.com:62898/wygovpaymongolab');
+
