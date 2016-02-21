@@ -5,7 +5,6 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>ExpressApp1</Name>
     <RootNamespace>ExpressApp1</RootNamespace>
-    <NameOfLastUsedPublishProfile>WYGovPay</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -62,7 +61,6 @@
     <Content Include="views\industrySummary.jade" />
     <Content Include="views\layout.jade" />
     <Content Include="views\error.jade" />
-    <None Include="WYGovPay.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
