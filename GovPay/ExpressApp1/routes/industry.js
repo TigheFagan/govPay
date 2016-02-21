@@ -9,12 +9,14 @@ router.get('/', function(req, res) {
     var inStateTotal = 0;
     var outOfStateCompanies = [];
     var outOfStateTotal = 0;
-    CompanyModel.find({ industry: industryID }, {}, { sort: { summaryAmount: -1 }, limit: 1000 },
+    CompanyModel.find({ industry: industryID }, 
+        { summaryAmount: 'summaryAmount', _id: '_id', companyName: 'companyName', inState: 'inState'}, 
+        { sort: { summaryAmount: -1 }},
         function (err, result) {
             console.log(err);
-        for (var i = 0; i < result.length; i++) {
-                var x = 5004000;
-                console.log(x.formatMoney());
+
+            for (var i = 0; i < result.length; i++) {
+            console.log(result[i]);
                 if (result[i].inState === true) {
                     inStateTotal = inStateTotal + result[i].summaryAmount;
                     inStateCompanies.push(result[i]);
