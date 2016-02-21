@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="wygovpay" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\devJS\\govPay\\GovPay\\ExpressApp1\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\devJS\\govPay\\GovPay\\ExpressApp1\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+</parameters>
