@@ -215,7 +215,7 @@ router.get('/calc', function (req, res) {
                             console.log(findOneResult['_id']);
                             IndustryModel.update({ '_id': findOneResult['_id'] },
                             {
-                                    industry: lookup[industry].industry,
+                                    industry: industry,
                                     inStateTotalAmount: lookup[industry].inStateTotal,
                                     outOfStateTotalAmount: lookup[industry].outOfStateTotal
                                 },
