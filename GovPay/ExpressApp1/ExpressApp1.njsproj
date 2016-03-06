@@ -56,6 +56,7 @@
     <Content Include="views\calc.jade" />
     <Content Include="views\companyDetail.jade" />
     <Content Include="views\companyList.jade" />
+    <Content Include="views\dupes.jade" />
     <Content Include="views\footer.jade" />
     <Content Include="views\index.jade" />
     <Content Include="views\industryDetail.jade" />

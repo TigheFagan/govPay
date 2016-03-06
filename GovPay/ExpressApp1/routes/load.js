@@ -67,6 +67,48 @@ function fillCompanyWithLine(companies, line) {
     };
 }
 
+router.get('/dupes', function(req, res) {
+    CompanyModel.find({}, {}, {}, function (err, result) {
+        //console.log('result lines' + result[0]['lines']);
+        for (var i = 0; i < result.length; i++) {
+            var companyID = result[i]._id;
+            //console.log(companyID);
+            var h = {};
+            //console.log('more line' +result[i]['lines']);
+            if (result[i]['lines'] !== undefined) {
+
+                for (var j = 0; j < result[i]['lines'].length; j++) {
+                    var lineId = result[i]['lines'][j]['_id'];
+                    var transdate = result[i]['lines'][j]['transdate'];
+                    var totalAmount = result[i]['lines'][j]['totalAmount'];
+                    var lineAmount = result[i]['lines'][j]['lineAmount'];
+                    var invoice = result[i]['lines'][j]['invoice'];
+                    var agency = result[i]['lines'][j]['agency'];
+                    var doc = result[i]['lines'][j]['doc'];
+                    var key = totalAmount + lineAmount + invoice + agency + doc;
+                    //console.log(key);
+                    if (key in h) {
+                        console.log('DUPE' + key);
+                        //console.log(lineId);
+                        CompanyModel.update({
+                            _id: companyID
+                        }, {
+                            $pull: { lines: { _id: lineId } }
+                        }, function (err) {
+                        });
+                    } else {
+                        h[key] = '1';
+                    }
+                }
+            }
+        }
+        res.render('dupes', {
+        });
+    });
+
+    
+});
+
 
 router.get('/', function (req, res) {
     
