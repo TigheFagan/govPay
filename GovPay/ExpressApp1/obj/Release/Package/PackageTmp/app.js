@@ -14,6 +14,7 @@ var search = require('./routes/search');
 var load = require('./routes/load');
 var company = require('./routes/company');
 var industry = require('./routes/industry');
+var api = require('./routes/api');
 
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
@@ -37,14 +38,13 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 app.use('/', routes);
 app.use('/users', users);
 app.use('/search', search);
 app.use('/load', load);
 app.use('/company', company);
 app.use('/industry', industry);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

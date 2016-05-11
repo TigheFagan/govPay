@@ -24,7 +24,10 @@ var companySchema = new mongoose.Schema({
 var industrySchema = new mongoose.Schema({
     industry: String,
     inStateTotalAmount : Number,
-    outOfStateTotalAmount : Number
+    outOfStateTotalAmount : Number,
+    label: String,
+    sortOrder: Number,
+    icon: String
 });
 
 

@@ -7,7 +7,7 @@ console.log('inside index.js');
 
 router.get('/', function (req, res) {
     res.render('index', {
-        title: 'WY Gov Pay'
+        title: 'Wyoming Spending'
     });    
 });
 

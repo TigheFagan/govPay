@@ -111,29 +111,22 @@ router.get('/dupes', function(req, res) {
 
 
 router.get('/', function (req, res) {
-    
-    //var url = 'https://docs.google.com/spreadsheets/d/1pcfow84akQl7FzjM_xsAE_ovP6UpIXutzBfjkErDo3c/gviz/tq?tq=SELECT%20*%20WHERE%20(%20E%20LIKE%20upper(%27%25pascal%20public%25%27)%20OR%20E%20LIKE%20lower(%27%25pascal%20public%25%27)%20OR%20E%20LIKE%20(%27%25Pascal%20Public%25%27)%20)%20AND%20A%20%3E%3D%20date%20%272015-12-01%27&tqx=reqId%3A0';
-    
-    //var url = 'https://docs.google.com/spreadsheets/d/1pcfow84akQl7FzjM_xsAE_ovP6UpIXutzBfjkErDo3c/gviz/tq?tq=SELECT%20*%20WHERE%20(%20E%20LIKE%20upper(%27%25public%25%27)%20OR%20E%20LIKE%20lower(%27%25public%25%27)%20OR%20E%20LIKE%20(%27%25Public%25%27)%20)%20AND%20A%20%3E%3D%20date%20%272015-12-01%27&tqx=reqId%3A0';
-    var url = 'https://docs.google.com/spreadsheets/d/1pcfow84akQl7FzjM_xsAE_ovP6UpIXutzBfjkErDo3c/gviz/tq?tq=SELECT%20*%20WHERE%20A%20%3E%3D%20date%20%272015-09-01%27&tqx=reqId%3A0';
+   var url = 'https://docs.google.com/spreadsheets/d/1pcfow84akQl7FzjM_xsAE_ovP6UpIXutzBfjkErDo3c/gviz/tq';
 
-    //var url = 'https://docs.google.com/spreadsheets/d/1pcfow84akQl7FzjM_xsAE_ovP6UpIXutzBfjkErDo3c/gviz/tq?tq=SELECT%20*%20WHERE%20(%20E%20LIKE%20upper(%27%25gannett%20peak%25%27)%20OR%20E%20LIKE%20lower(%27%25gannett%20peak%25%27)%20OR%20E%20LIKE%20(%27%25Gannett%20Peak%25%27)%20)%20AND%20A%20%3E%3D%20date%20%272015-12-01%27&tqx=reqId%3A0';
-    
-    
     request(url, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             var str2 = body.substring(47);
             var str3 = str2.substring(0, str2.length - 2);
             var jsonObj = JSON.parse(str3);
-            
+
             var str4 = '';
             var companies = [];
             var selector = '.rows .c'; // xPath CSS like selector
-            JSONSelect.forEach(selector, jsonObj, function (saoLineObj) {
+            JSONSelect.forEach(selector, jsonObj, function(saoLineObj) {
                 var line = translateLine(saoLineObj);
                 fillCompanyWithLine(companies, line);
             });
-            
+
             //console.log(JSON.stringify(companies, null, ' '));
             str4 = str4 + JSON.stringify(companies, null, ' ');
 
@@ -151,21 +144,21 @@ router.get('/', function (req, res) {
                             var maxDate = new Date('1/1/1950');
                             for (var j = 0; j < result['lines'].length ; j++) {
                                 var dateFound = result['lines'][j]['transdate'];
-                                //console.log(dateFound);
+                                console.log(dateFound);
                                 if (dateFound > maxDate) {
                                     maxDate = dateFound;
                                 }
                             }
-                            
+
                             console.log('maxDate' + maxDate);
                             var isNewLineFound = false;
                             for (var k = 0; k < company.lines.length; k++) {
                                 var newLine = company.lines[k];
                                 var newLineDate = new Date(newLine.transdate);
-                                //console.log('date found ' + newLineDate);
+                                console.log('date found ' + newLineDate);
 
                                 if (newLineDate > maxDate) {
-                                    
+
                                     console.log('add this line with date:' + newLineDate);
                                     isNewLineFound = true;
                                     result['lines'].push(newLine);
@@ -199,7 +192,7 @@ router.get('/', function (req, res) {
 //var db = req.db;
             //var company = db.get('company');
             //company.insert(companies);
-
+        
             res.render('load', {
                 str1: str4.length
             });
@@ -210,91 +203,183 @@ router.get('/', function (req, res) {
 
 
 router.get('/calc', function (req, res) {
-    CompanyModel.find({}, {}, {}, function (err, result) {
-        console.log(err);
-        var lookup = {};
-        for (var i = 0; i < result.length; i++) {
-            var company = result[i];
-            console.log(company.companyName);
-            var companyLines = company.lines;
-            var totalAmount = 0;
-            for (var j = 0; j < companyLines.length; j++) {
-                totalAmount = totalAmount + companyLines[j].lineAmount;
-            }
-            
-            if (lookup[result[i].industry] === undefined) {
-                lookup[result[i].industry] = { inStateTotal: 0, outOfStateTotal: 0 };
-            }
-            if (result[i].inState) {
-                lookup[result[i].industry].inStateTotal = lookup[result[i].industry].inStateTotal + totalAmount;
-            } else {
-                lookup[result[i].industry].outOfStateTotal = lookup[result[i].industry].outOfStateTotal + totalAmount;
-            }
+    // manual streaming
+    var stream = CompanyModel.find({}, {}, {}).stream();
 
-            
-            console.log(totalAmount);
-            CompanyModel.update({ '_id': company._id },
-                { summaryAmount: totalAmount },
-                function(err2, result2) {
-                    if (err2) {
-                        console.log('update lines ERROR ' + err2);
-                    } else {
-                        console.log('Save Company summaryAmount');
-                    }
-                });
+    stream.on('data', function (company) {
+        // do something with the mongoose document
+        console.log(company.companyName);
+        var companyLines = company.lines;
+        var totalAmount = 0;
+        for (var j = 0; j < companyLines.length; j++) {
+            totalAmount = totalAmount + companyLines[j].lineAmount;
         }
-        
+        console.log(totalAmount);
+        CompanyModel.update({ '_id': company._id },
+            { summaryAmount: totalAmount },
+            function(err2, result2) {
+                if (err2) {
+                    console.log('update lines ERROR ' + err2);
+                } else {
+                    console.log('Save Company summaryAmount');
+                }
+            });
+    }).on('error', function (err) {
+  // handle the error
+    }).on('close', function () {
+        res.render('calc', {
+            numberOfCompanies: 42
+        });
+    });
+});
+
+
+router.get('/calcIndustry', function (req, res) {
+    // manual streaming
+    var stream = CompanyModel.find({ industry: { $ne: '' } }, {}, {}).stream();
+    var lookup = {};
+
+    stream.on('data', function (company) {
+        // do something with the mongoose document
+        console.log(company.companyName);
+
+        (function(lookup) {
+            if (lookup[company.industry] === undefined) {
+                lookup[company.industry] = { inStateTotal: 0, outOfStateTotal: 0 };
+            }
+            console.log(company.inState);
+
+            if (company.inState !== undefined) {
+                if (lookup[company.industry].inState)
+                {
+                    console.log('IN');
+                } else
+                {
+                    console.log('OUT');
+                }
+                if (company.inState) {
+                    lookup[company.industry].inStateTotal = lookup[company.industry].inStateTotal + company.summaryAmount;
+                } else {
+                    lookup[company.industry].outOfStateTotal = lookup[company.industry].outOfStateTotal + company.summaryAmount;
+                }
+            }
+        } (lookup));
+    }).on('error', function (err) {
+  // handle the error
+    }).on('close', function () {
         for (var industry in lookup) {
             if (lookup.hasOwnProperty(industry)) {
                 console.log(industry);
                 console.log(lookup[industry].inStateTotal);
                 console.log(lookup[industry].outOfStateTotal);
 
-                (function(industry, lookup) {
-                    IndustryModel.findOne({ 'industry': industry }, function (errIndustry, findOneResult) {
-                        if (findOneResult) {
-                            console.log('UPDATE');
-                            console.log(findOneResult['_id']);
-                            IndustryModel.update({ '_id': findOneResult['_id'] },
-                            {
-                                    industry: industry,
-                                    inStateTotalAmount: lookup[industry].inStateTotal,
-                                    outOfStateTotalAmount: lookup[industry].outOfStateTotal
-                                },
-                                function(err3, result3) {
-                                    if (err3) {
-                                        console.log('update lines ERROR ' + err3);
-                                    } else {
-                                        console.log('Saved industry Totals');
-                                    }
-                                });
+
+                IndustryModel.update({ 'industry': industry },
+                    {
+                        industry: industry,
+                        inStateTotalAmount: lookup[industry].inStateTotal,
+                        outOfStateTotalAmount: lookup[industry].outOfStateTotal
+                    },
+                    function(err3, result3) {
+                        if (err3) {
+                            console.log('update lines ERROR ' + err3);
                         } else {
-                            console.log('INSERT');
-                            console.log(industry);
-                            console.log(lookup[industry].inStateTotal);
-                            console.log(lookup[industry].outOfStateTotal);
-                            var industryModel = new IndustryModel({
-                                industry: industry, 
-                                inStateTotalAmount: lookup[industry].inStateTotal,
-                                outOfStateTotalAmount: lookup[industry].outOfStateTotal
-                            });
-                            industryModel.save(function(saveErr) {
-                                if (saveErr) {
-                                    console.log(saveErr);
-                                }
-                            });
+                            console.log('Saved industry Totals');
                         }
                     });
-                }(industry, lookup));
-            }    
+            }
         }
-
         res.render('calc', {
-            numberOfCompanies: result.length
+            numberOfCompanies: 42
         });
-
     });
 });
+
+    //CompanyModel.find({}, {}, {}, function (err, result) {
+        //console.log(err);
+        //var lookup = {};
+        //for (var i = 0; i < result.length; i++) {
+        //    var company = result[i];
+        //    console.log(company.companyName);
+        //    var companyLines = company.lines;
+        //    var totalAmount = 0;
+            //for (var j = 0; j < companyLines.length; j++) {
+            //    totalAmount = totalAmount + companyLines[j].lineAmount;
+            //}
+            
+            //if (lookup[result[i].industry] === undefined) {
+            //    lookup[result[i].industry] = { inStateTotal: 0, outOfStateTotal: 0 };
+            //}
+            //if (result[i].inState) {
+            //    lookup[result[i].industry].inStateTotal = lookup[result[i].industry].inStateTotal + totalAmount;
+            //} else {
+            //    lookup[result[i].industry].outOfStateTotal = lookup[result[i].industry].outOfStateTotal + totalAmount;
+            //}
+
+            
+            //console.log(totalAmount);
+            //CompanyModel.update({ '_id': company._id },
+            //    { summaryAmount: totalAmount },
+            //    function(err2, result2) {
+            //        if (err2) {
+            //            console.log('update lines ERROR ' + err2);
+            //        } else {
+            //            console.log('Save Company summaryAmount');
+            //        }
+            //    });
+        //}
+        
+        //for (var industry in lookup) {
+        //    if (lookup.hasOwnProperty(industry)) {
+        //        console.log(industry);
+        //        console.log(lookup[industry].inStateTotal);
+        //        console.log(lookup[industry].outOfStateTotal);
+
+        //        (function(industry, lookup) {
+        //            IndustryModel.findOne({ 'industry': industry }, function (errIndustry, findOneResult) {
+        //                if (findOneResult) {
+        //                    console.log('UPDATE');
+        //                    console.log(findOneResult['_id']);
+        //                    IndustryModel.update({ '_id': findOneResult['_id'] },
+        //                    {
+        //                            industry: industry,
+        //                            inStateTotalAmount: lookup[industry].inStateTotal,
+        //                            outOfStateTotalAmount: lookup[industry].outOfStateTotal
+        //                        },
+        //                        function(err3, result3) {
+        //                            if (err3) {
+        //                                console.log('update lines ERROR ' + err3);
+        //                            } else {
+        //                                console.log('Saved industry Totals');
+        //                            }
+        //                        });
+        //                } else {
+        //                    console.log('INSERT');
+        //                    console.log(industry);
+        //                    console.log(lookup[industry].inStateTotal);
+        //                    console.log(lookup[industry].outOfStateTotal);
+        //                    var industryModel = new IndustryModel({
+        //                        industry: industry, 
+        //                        inStateTotalAmount: lookup[industry].inStateTotal,
+        //                        outOfStateTotalAmount: lookup[industry].outOfStateTotal
+        //                    });
+        //                    industryModel.save(function(saveErr) {
+        //                        if (saveErr) {
+        //                            console.log(saveErr);
+        //                        }
+        //                    });
+        //                }
+        //            });
+        //        }(industry, lookup));
+        //    }    
+        //}
+
+        //res.render('calc', {
+        //    numberOfCompanies: result.length
+        //});
+
+    //});
+
 
 
 module.exports = router;

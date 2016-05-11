@@ -9,7 +9,7 @@ block content
                     ul(class="list-group")
                         div(style="text-align:center;font-size:18px")
                             script.
-                                document.write(nformatter(#{inStateTotal}));
+                                document.write(#{inStateTotal});
                     each val in inStateCompanies
                         ul(class="list-group-item")
                             div(class="row")
@@ -17,7 +17,7 @@ block content
                                     a(href='/search/companyDetail?id=#{val._id}') #{val.companyName}
                                 span(class="col-md-4")
                                     script.
-                                        document.write(nformatter(#{val.summaryAmount}));
+                                        document.write(#{val.summaryAmount});
         div(class="col-md-6 col-centered col-fixed")
             div(class="panel panel-warning")
                 div(class="panel-heading") Out Of State Vendors
@@ -25,7 +25,7 @@ block content
                     ul(class="list-group")
                         div(style="text-align:center;font-size:18px")
                             script.
-                                document.write(nformatter(#{outOfStateTotal}));
+                                document.write(#{outOfStateTotal});
                     each val in outOfStateCompanies
                         ul(class="list-group-item")
                             div(class="row")
@@ -33,5 +33,5 @@ block content
                                     a(href='/search/companyDetail?id=#{val._id}') #{val.companyName}
                                 span(class="col-md-4")
                                     script.
-                                        document.write(nformatter(#{val.summaryAmount}));
+                                        document.write(#{val.summaryAmount});
             

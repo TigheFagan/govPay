@@ -1,0 +1,398 @@
+/*
+Author: Justin Johnson
+Company: West Edge Collective
+Date: 2016
+
+COLORS:
+Dk Brown:       #301e17
+Md Brown:       #492f24
+Lt Brown:       #634031
+Lt Brown2:      #7a4f3c
+Bg Brown:       #d9cbc5
+Txt Brown:      #e39d7f
+Yellow:         #ffc424
+*/
+
+
+/*==================================================
+    GENERAL STYLES
+==================================================*/
+/* Float clearing fix */
+.clearfix:after {
+    visibility:hidden;
+    display:block;
+    font-size:0;
+    content: " ";
+    clear:both;
+    height:0;
+}
+.clearfix {
+    display:inline-block;
+}
+
+.color-brand {
+    color:#ffc424;
+}
+
+.color-white {
+    color:#FFF;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+/* used to style the main column to be centered with a max width */
+.center-column {
+    width:85%;
+    max-width:800px;
+    margin:0 auto;
+}
+
+.templates {
+    display:none;
+}
+
+html, body {
+    width:100%;
+    height:100%;
+    font-family: 'Arial', sans-serif;
+    background:#492f24;
+}
+
+div.content {
+    background: #d9cbc5;
+    padding:20px 0 20px 0;
+    display:block;
+}
+
+div.breadcrumb {
+    padding:10px 0 10px 0;
+}
+
+
+/*==================================================
+    NAV STYLES
+==================================================*/
+nav {
+    border-bottom: 4px solid #301e17;
+    height:65px;
+    padding-top:10px;
+    width:100%;
+
+    /* first background is fallback for unsupported CSS gradients */
+    background:#492f24;
+    background:radial-gradient(at top, #7a4f3c, #492f24 75%);
+}
+
+nav i.fa-signal {
+    float:left;
+    margin-right:5px;
+    font-size:3.6em;
+}
+
+
+nav h1 {
+    font-family: 'Arvo', serif;
+    color:#FFF;
+    font-size:2.2em;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+nav em {
+    color: #ffc424;
+    font-style: normal;
+    float:left;
+    font-size:1.2em;
+}
+
+/*==================================================
+    CARD STYLES
+==================================================*/
+
+ul.card-list {
+    display:block;
+    width:100%;
+    margin:0 auto;
+    text-align:center;
+    padding-top:20px;
+}
+
+ul.card-list li {
+    display:inline-block;
+    width:45%;
+    margin:0 2% 2% 0;
+    min-width:320px;
+}
+
+div.card {
+    text-align: left;
+    border:3px solid white;
+    padding:3%;
+
+    /* first background is fallback for unsupported CSS gradients */
+    background:#492f24;
+    background:radial-gradient(at top, #7a4f3c, #492f24 75%);
+
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.25);
+
+    display:none;
+}
+
+div.card div.card-title {
+    color:#FFF;
+    height:42px;
+}
+
+div.card div.card-title i {
+    font-size:1.8em;
+}
+
+div.card div.card-title p {
+    display:inline-block;
+    height:100%;
+    font-family: 'Arvo', serif;
+    font-size:1.3em;
+}
+
+div.card .chart-pane {
+    display:inline-block;
+    width:27%;
+    vertical-align: top;
+}
+
+div.card .chart-pane.chart-label {
+    text-transform: uppercase;
+    padding-top:100px;
+    font-family: 'Arvo', serif;
+}
+
+div.card .chart-pane.chart {
+    height:160px;
+    width:40%;
+    float:center;
+    text-align: center;
+}
+
+div.card .chart-pane.chart-label.label-left {
+    float:left;
+}
+
+div.card .chart-pane.chart-label.label-right {
+    float:right;
+}
+
+div.card .chart-pane.chart-label p {
+    text-align:center;
+    display:block;
+    text-align:center;
+    width:100%;
+}
+
+div.card .chart-pane.chart-label p.chart-key {
+    font-size:0.6em;
+}
+
+div.card .chart-pane p.chart-value {
+    font-size:1.7em;
+    font-weight: bold;
+}
+
+div.card a.card-btn {
+    display:block;
+    background:#301e17;
+    border:1px solid #634031;
+    color:#e39d7f;
+    width:100%;
+    margin:0 auto;
+    text-align:center;
+    padding:2% 0 2% 0;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+div.card a.card-btn:hover {
+    color:#FFF;
+    background:#634031;
+    border:1px solid #301e17;
+}
+
+/*==================================================
+    DETAIL PANE STYLES
+==================================================*/
+div.detail_pane {
+    text-align: left;
+    border:3px solid white;
+    padding:1.5%;
+    display:inline-block;
+    max-width:350px;
+    width:42%;
+
+    /* first background is fallback for unsupported CSS gradients */
+    background:#492f24;
+    background:radial-gradient(at top, #7a4f3c, #492f24 75%);
+
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.25);
+}
+
+div.detail_pane.pane_left{
+    float:left;
+}
+
+div.detail_pane.pane_right {
+    float:right;
+}
+
+div.detail_pane h2 {
+    font-size:2em;
+    color:white;
+    font-family: 'Arvo', serif;
+    margin-bottom:10px;
+}
+
+div.detail_pane div.total_spent {
+    text-align: center;
+    font-size:3em;
+    font-family: 'Arvo', serif;
+    color:white;
+    margin-bottom:10px;
+}
+
+div.detail_pane.pane_left h2 {
+    color:#ffc424;
+}
+
+div.detail_pane.pane_left div.total_spent {
+    color:#ffc424;
+}
+
+div.detail_pane ul.vendor_list li {
+    display:block;
+    width:94%;
+    padding:6px 3% 6px 3%;
+    color:white;
+}
+
+div.detail_pane ul.vendor_list li:nth-child(odd) {
+    background:rgba(0, 0, 0, 0.2);
+}
+
+div.detail_pane ul.vendor_list li span {
+    width:38%;
+    color: #e39d7f;
+    font-size:0.9em;
+    line-height:1.25em;
+    display:inline-block;
+    vertical-align: top;
+    text-align: left;
+}
+
+div.detail_pane ul.vendor_list li span.vendor {
+    width:60%;
+}
+
+
+
+/*==================================================
+    FOOTER STYLES
+==================================================*/
+footer {
+    background: #492f24;
+    border-top: 4px solid #301e17;
+    padding:20px;
+
+    /* first background is fallback for unsupported CSS gradients */
+    background:#492f24;
+    background:radial-gradient(at top, #7a4f3c, #492f24 40%);
+}
+
+footer div {
+    text-align:center;
+    text-transform:uppercase;
+    color:#e39d7f;
+    font-size:0.75em;
+    margin-bottom:15px;
+}
+
+footer div.westedge-logo {
+    margin:0 auto;
+    margin-bottom:10px;
+}
+
+/*==================================================
+    RESPONSIVE OVERRIDES
+==================================================*/
+@media (max-width:560px) {
+    .center-column {
+        width:100%;
+        max-width:250px;
+        margin:0 auto;
+    }
+
+    nav {
+        height:35px;
+    }
+
+    nav h1 {
+        font-size:1em;
+    }
+
+    nav em {
+        font-size:0.7em;
+    }
+
+    nav i.fa-signal {
+        font-size:1.8em;
+    }
+
+    /* CARD OVERRIDES */
+
+    ul.card-list li {
+        min-width:225px;
+    }
+
+    div.card div.card-title i {
+        font-size:1.2em;
+    }
+
+    div.card div.card-title p {
+        font-size:0.9em;
+        padding-left:1px;
+    }
+
+    div.card div.chart-pane {
+        width:15%;
+    }
+
+    div.card div.chart-pane.chart{
+        height:145px;
+        width:65%
+    }
+
+    div.card .chart-pane.chart-label {
+        padding-top:75px;
+    }
+
+    div.card .chart-pane.chart-label p.chart-key {
+        font-size:0.45em;
+    }
+
+    div.card .chart-pane p.chart-value {
+        font-size:1.0em;
+    }
+
+    /* DETAIL PANE OVERRIDES */
+    div.detail_pane {
+        display:block;
+        float:none !important;
+        width:90%;
+        margin:0 auto;
+        margin-bottom:10px;
+        padding:3.5%;
+    }
+}
