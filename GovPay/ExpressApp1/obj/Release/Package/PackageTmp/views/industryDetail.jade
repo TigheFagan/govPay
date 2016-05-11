@@ -1,37 +1,28 @@
 ﻿extends layout
-
 block content
-    div(class='row row-centered' style="margin-top:1em;" )
-        div(class="col-md-6 col-centered col-fixed")
-            div(class="panel panel-success")
-                div(class="panel-heading") Wyoming Vendors
-                div(class="panel-body")
-                    ul(class="list-group")
-                        div(style="text-align:center;font-size:18px")
-                            script.
-                                document.write(#{inStateTotal});
+    div(class='clearfix content')
+        div(class="center-column")
+            div(class="detail_pane pane_left")
+                h2 Wyoming Vendors
+                div(class="total_spent")
+                    script.
+                        document.write(nformatter(#{inStateTotal}));
+                ul(class="vendor_list")
                     each val in inStateCompanies
-                        ul(class="list-group-item")
-                            div(class="row")
-                                span(class="col-md-8 hideOverflow")
-                                    a(href='/search/companyDetail?id=#{val._id}') #{val.companyName}
-                                span(class="col-md-4")
-                                    script.
-                                        document.write(#{val.summaryAmount});
-        div(class="col-md-6 col-centered col-fixed")
-            div(class="panel panel-warning")
-                div(class="panel-heading") Out Of State Vendors
-                div(class="panel-body") 
-                    ul(class="list-group")
-                        div(style="text-align:center;font-size:18px")
-                            script.
-                                document.write(#{outOfStateTotal});
+                        li
+                            span(class="vendor") #{val.companyName}
+                            span(class="spending")
+                                script.
+                                    document.write(nformatter(#{val.summaryAmount})); 
+            div(class="detail_pane pane_right")
+                h2 Out Of State Vendors
+                div(class="total_spent")
+                    script.
+                        document.write(nformatter(#{outOfStateTotal}));
+                ul(class="vendor_list")
                     each val in outOfStateCompanies
-                        ul(class="list-group-item")
-                            div(class="row")
-                                span(class="col-md-8 hideOverflow")
-                                    a(href='/search/companyDetail?id=#{val._id}') #{val.companyName}
-                                span(class="col-md-4")
-                                    script.
-                                        document.write(#{val.summaryAmount});
-            
+                        li
+                            span(class="vendor") #{val.companyName}
+                            span(class="spending")
+                                script.
+                                    document.write(nformatter(#{val.summaryAmount}));   
