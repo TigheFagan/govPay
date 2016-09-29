@@ -27,7 +27,7 @@ var app1 = (function ($, d3) {
 
     // gets jquery object from a template collection
     a.getTemplate = function (name) {
-        var $template = $('[data-template="' + name +'"').clone();
+        var $template = $('[data-template="' + name +'"]').clone();
         $template.removeAttr('data-template');
         return $template;
     };

@@ -7,6 +7,10 @@ html
     input(type='button',value='Search',data-transition='fade', data-theme='c', onclick='searchCompany();')
     div(id='results')
 
+    object(width="100" height="100")
+        param(name="movie" value="http://powtoon_usermedia.s3.amazonaws.com/swf/5/animProps01.swf")
+        embed(src="http://powtoon_usermedia.s3.amazonaws.com/swf/5/animProps01.swf" width="100" height="100")
+
 script.
     function searchCompany() {
         var xhttp = new XMLHttpRequest();
