@@ -130,6 +130,10 @@ ul.card-list li {
     min-width:320px;
 }
 
+ul.card-list li a{
+    color: black;
+}
+
 div.card {
     text-align: left;
     border:3px solid white;
