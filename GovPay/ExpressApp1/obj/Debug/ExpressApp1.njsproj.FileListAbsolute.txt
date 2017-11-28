@@ -1,2 +1,0 @@
-C:\devJS\govPay\GovPay\ExpressApp1\obj\Debug\ExpressApp1.njsprojResolveAssemblyReference.cache
-C:\devJS\govPay\GovPay\ExpressApp1\bin\Microsoft.NodejsTools.WebRole.dll
